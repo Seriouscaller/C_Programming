@@ -3,6 +3,12 @@
 
 int main()
 {
-    printf("Hello world!\n");
-    return 0;
+    double nc;
+    for (nc = 0; getchar() != EOF; ++nc){
+        printf("%.0f\n", nc);
+    }
+
+
+    //printf("Hello world!\n");
+    //return 0;
 }
