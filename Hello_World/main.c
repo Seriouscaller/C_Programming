@@ -8,7 +8,4 @@ int main()
         printf("%.0f\n", nc);
     }
 
-
-    //printf("Hello world!\n");
-    //return 0;
 }
