@@ -2,6 +2,11 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+//Function prototypes
+void clearInputBuffer(void);
+void createHorizontalLine(int size, int vertical_linenumber);
+void displayHeader(int size);
+
 int main()
 {
     int current_horizontal_column;
@@ -24,11 +29,10 @@ int main()
         }
     }while(!validInput);
 
-    factor = user_answer;
-
     //TODO INPUT VALIDATION
 
-    //Insert forloop into flowchart
+    //Insert for-loop into flowchart
+    factor = user_answer;
     displayHeader(factor);
     printf("\n");
 
