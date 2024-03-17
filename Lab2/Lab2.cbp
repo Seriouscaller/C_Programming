@@ -2,12 +2,12 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="PracticeExamples" />
+		<Option title="Lab2" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/PracticeExamples" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Debug/Lab2" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -16,7 +16,7 @@
 				</Compiler>
 			</Target>
 			<Target title="Release">
-				<Option output="bin/Release/PracticeExamples" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Release/Lab2" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -31,16 +31,7 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="enums.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="main.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="sizeOfDatatypes.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="strings.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Extensions>

@@ -1,9 +1,17 @@
 # depslib dependency file v1.0
-1710494726 source:c:\users\ralli\documents\github\c_programming\practiceexamples\main.c
+1710598256 source:c:\users\ralli\documents\github\c_programming\practiceexamples\main.c
 	<stdio.h>
 	<stdlib.h>
 
 1710494695 source:c:\users\ralli\documents\github\c_programming\practiceexamples\sizeofdatatypes.c
+	<stdio.h>
+	<stdlib.h>
+
+1710496037 source:c:\users\ralli\documents\github\c_programming\practiceexamples\enums.c
+	<stdio.h>
+	<stdlib.h>
+
+1710495419 source:c:\users\ralli\documents\github\c_programming\practiceexamples\strings.c
 	<stdio.h>
 	<stdlib.h>
 
