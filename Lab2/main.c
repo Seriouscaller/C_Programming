@@ -10,15 +10,12 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-
-float absoluteValue(float current_term);
-void displayRowResult(int term_number, float current_term);
-float calculateTerm(int x, int term_number);
-int calculateFactorial(int term);
-int power(int base, int exponent);
+double absoluteValue(double);
+void displayRowResult(int, double);
 void displayHeader();
-int readUserInputAndValidate(char prompt [], int lowerLimit, int upperLimit);
+int readUserInputAndValidate(char[], int, int);
 void clearInputBuffer(void);
+void displayResult(int, double, float);
 
 #define DEBUG;
 
@@ -29,94 +26,67 @@ void clearInputBuffer(void);
 int main()
 {
     int x;
-    int n = 1;
-    float latest_term;
-    float current_term;
-    int term_number = 1;
-    bool is_limit_reached = false;
-    float sum = 1;
+    double current_term;
     const float THRESHOLD = 0.0000001;
 
-    x = readUserInputAndValidate("Enter the value of x: ", 0, 10);
+
+    x = readUserInputAndValidate("Enter the value of x: ", -10, 10);
     displayHeader();
 
-    //printf("Factorial of 3: %d\n", calculateFactorial(3));
 
-    //float first = calculateTerm(x, term_number++);
-    //float second = calculateTerm(x, term_number++);
-    //printf("%f %f", first, second);
-
-
+    unsigned long long int factorial = 1;
+    bool is_limit_reached = false;
+    double sum = 1;
+    int term_number = 1;
+    int nominator = x;
     while (!is_limit_reached){
-        current_term = calculateTerm(x, term_number);
 
-        sum += current_term;
-        displayRowResult(term_number, current_term);
+        current_term = (double) nominator / factorial;
         is_limit_reached = (absoluteValue(current_term) < THRESHOLD);
-        term_number++;
-        latest_term = current_term;
+        sum += current_term;
+        displayRowResult(term_number, sum);
 
-    #ifdef DEBUG
-        printf("Curr Term: %d Sum: %f Is_limit: %b Termnr: %d Latest: %f", current_term, sum, is_limit_reached, term_number, latest_term);
-        printf("Sum: %f\n", sum);
-        while(getchar()!= '\n'){}
-    #endif // DEBUG
+        #ifdef DEBUG
+            /*Pauses the program until ENTER is pressed.*/
+            printf("Termnumber: %d factorial: %8llu curr_term: %.10f sum: %.10f x: %d", term_number, factorial, current_term, sum, x);
+            pause();
+        #endif // DEBUG
+
+        factorial *= ++term_number;
+        nominator *= x;
 
     }
+    displayResult(term_number, sum, THRESHOLD);
+    pause();
     return 0;
 }
 
 
-float absoluteValue(float current_term){
+void pause(void){
+    while(getchar()!= '\n'){}
+}
+
+
+double absoluteValue(double current_term){
     if (current_term < 0){
         return (current_term * -1);
     }else return current_term;
 }
 
 
-void displayRowResult(int term_number, float current_term){
+void displayResult(int term, double sum, float THRESHOLD){
+    printf("\n");
+    printf("Within threshold of %.7f at term %d.\n", THRESHOLD, term-1);
+    printf("Sum is equal to: %f ", sum);
+}
 
+
+void displayRowResult(int term_number, double sum){
     printf("%c%c", TAB, TAB);
     printf("%5d %c", term_number, TAB);
-    printf("%9.f %f", current_term);
+    printf("%10.8f", sum);
     printf("%c", NEWLINE);
     return;
-}
-
-
-float calculateTerm(int x, int term_number){
-
-    float nominator = power(x, term_number);
-    int factorial = calculateFactorial(term_number);
-    float quotient = (nominator / factorial);
-
-    #ifdef DEBUG
-        printf("Term-value: %f ", quotient);
-        printf("Nom: %f ", nominator);
-        printf("Fact: %d ", factorial);
-        printf("Quo: %f ", quotient);
-    #endif
-
-    return quotient;
-}
-
-
-int calculateFactorial(int term){
-
-    int factorial = 1;
-    while(term > 1) {
-        factorial *= term;
-        term--;
-    }
-    return factorial;
-}
-
-
-int power(int base, int exponent){
-
-    int product = 1;
-    while(exponent-- > 1) product *= base;
-    return product;
 }
 
 
@@ -129,17 +99,12 @@ void displayHeader(){
 
 
 int readUserInputAndValidate(char prompt [], int lowerLimit, int upperLimit){
-
     int x;
     do
     {
         printf("%s (%d-%d):", prompt, lowerLimit, upperLimit);
         scanf("%d", &x);
         clearInputBuffer();
-
-        #ifdef DEBUG
-            printf(" -DEBUG- size: %d\n", x);
-        #endif // DEBUG
     }
     while (x < lowerLimit || x > upperLimit);
     return x;

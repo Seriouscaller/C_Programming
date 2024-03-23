@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1710598256 source:c:\users\ralli\documents\github\c_programming\practiceexamples\main.c
+1710796485 source:c:\users\ralli\documents\github\c_programming\practiceexamples\main.c
 	<stdio.h>
 	<stdlib.h>
 
@@ -14,4 +14,6 @@
 1710495419 source:c:\users\ralli\documents\github\c_programming\practiceexamples\strings.c
 	<stdio.h>
 	<stdlib.h>
+
+1711197654 source:c:\users\ralli\documents\github\c_programming\practiceexamples\mathfunctions.c
 
