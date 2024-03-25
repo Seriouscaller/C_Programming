@@ -17,7 +17,7 @@ int readUserInputAndValidate(char[], int, int);
 void clearInputBuffer(void);
 void displayResult(int, double, float);
 
-#define DEBUG;
+//#define DEBUG;
 
 #define NEWLINE '\012'
 #define TAB     '\011'
