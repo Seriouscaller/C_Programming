@@ -1,33 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 
-unsigned int lengthOfString(char string[]);
 char readUserInputAndValidate(char, int, int);
-bool validateBinaryString(char string[], int);
-
 
 int main()
 {
     char input[17];
-    unsigned long int bitpattern;
-    int scanfStatus;
-char *end;
-    bool valid_input = false;
 
+    int scanfStatus = scanf("%16s", &input);    //Only allowing 16 characters.
+    char length = lengthOfString(input);
 
+    printf("Length of user-input: %d\n", length);
 
+    printf("Scanf-status: %d\n", scanfStatus);
+    printf("Userinput: %s\n", input);
+    puts(input);
 
-
-    while(!valid_input){
-        printf("Input bitpattern: ");
-        scanfStatus = scanf("%16s", &input);    //Only allowing 16 characters.
-        char length = lengthOfString(input);
-        valid_input = validateBinaryString(input, length);
-    }
-
-    long int binaryNumber = strtoul(input, &end, 2);
-    printf("Converted: %lu", binaryNumber);
 
     unsigned int stat = 0000000010110101;
     unsigned int checkFuel = 0b0000000000010000;
@@ -52,24 +40,11 @@ char *end;
     return 0;
 }
 
-
-bool validateBinaryString(char string[], int length){
-char *end;
-    if (length < 17){
-        return false;
-    }
-
-    long int conversion = strtoul(string, &end, 2);
-    if (conversion < 0){
-        return true;
-    }else{
-        return false;
-    }
+int validateBinaryString(char string[]){
 
 }
 
-
-unsigned int lengthOfString(char string[]){
+int lengthOfString(char string[]){
     unsigned int counter;
     for(counter = 0; string[counter]; ++counter);
     return counter;
