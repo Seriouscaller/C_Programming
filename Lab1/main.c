@@ -14,7 +14,7 @@
 void clearInputBuffer(void);
 void createHorizontalLine(int size, int vertical_linenumber);
 void displayHeader(int size);
-void readUserInputAndValidate(char prompt [], int lowerLimit, int upperLimit);
+int readUserInputAndValidate(char prompt [], int, int);
 
 /*Macros*/
 #define DASH    '\055'
@@ -93,8 +93,8 @@ void displayHeader(int size){
 
     printf("%c", NEWLINE);
     /*Vertical separator"-----------"*/
-    int bars = size * COLUMN_WIDTH + 5;
-    for(int i = 0; i < bars;i++){
+    int dashes = size * COLUMN_WIDTH + 5;
+    for(int i = 0; i < dashes;i++){
         printf("%c", DASH);
     }
     return;

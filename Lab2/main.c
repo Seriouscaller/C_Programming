@@ -13,7 +13,7 @@
 double absoluteValue(double);
 void displayRowResult(int, double);
 void displayHeader();
-int readUserInputAndValidate(char[], int, int);
+float readUserInputAndValidate(char[], float, float);
 void clearInputBuffer(void);
 void displayResult(int, double, float);
 
@@ -30,7 +30,7 @@ int main()
     const float THRESHOLD = 0.0000001;
 
 
-    x = readUserInputAndValidate("Enter the value of x: ", -10, 10);
+    x = readUserInputAndValidate("Enter the value of x: ", -10.0, 10.0);
     displayHeader();
 
 
@@ -98,12 +98,12 @@ void displayHeader(){
 }
 
 
-int readUserInputAndValidate(char prompt [], int lowerLimit, int upperLimit){
-    int x;
+float readUserInputAndValidate(char prompt [], float lowerLimit, float upperLimit){
+    float x;
     do
     {
-        printf("%s (%d-%d):", prompt, lowerLimit, upperLimit);
-        scanf("%d", &x);
+        printf("%s (%.2f-%.2f):", prompt, lowerLimit, upperLimit);
+        scanf("%f", &x);
         clearInputBuffer();
     }
     while (x < lowerLimit || x > upperLimit);
