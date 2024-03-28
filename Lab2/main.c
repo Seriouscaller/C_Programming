@@ -2,7 +2,7 @@
    purpose:   Lab 1 - Task 2
               Approximate the value of e^x using a Taylor-serie.
 
-   last modified: 2024.03.17
+   last modified: 2024.03.27
    Erik Karlsson
 */
 
@@ -13,7 +13,7 @@
 double absoluteValue(double);
 void displayRowResult(int, double);
 void displayHeader();
-float readUserInputAndValidate(char[], float, float);
+int readUserInputAndValidate(char[], int, int);
 void clearInputBuffer(void);
 void displayResult(int, double, float);
 
@@ -30,7 +30,7 @@ int main()
     const float THRESHOLD = 0.0000001;
 
 
-    x = readUserInputAndValidate("Enter the value of x: ", -10.0, 10.0);
+    x = readUserInputAndValidate("Enter the value of x: ", -10, 10);
     displayHeader();
 
 
@@ -98,12 +98,12 @@ void displayHeader(){
 }
 
 
-float readUserInputAndValidate(char prompt [], float lowerLimit, float upperLimit){
-    float x;
+int readUserInputAndValidate(char prompt [], int lowerLimit, int upperLimit){
+    int x;
     do
     {
-        printf("%s (%.2f-%.2f):", prompt, lowerLimit, upperLimit);
-        scanf("%f", &x);
+        printf("%s (%d-%d):", prompt, lowerLimit, upperLimit);
+        scanf("%d", &x);
         clearInputBuffer();
     }
     while (x < lowerLimit || x > upperLimit);

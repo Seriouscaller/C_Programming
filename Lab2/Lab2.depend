@@ -1,5 +1,12 @@
 # depslib dependency file v1.0
-1711362824 source:c:\users\ralli\documents\github\c_programming\lab2\main.c
+140718385058218 <<<<<<< Updated upstream
+
+1711561424 source:c:\users\ralli\documents\github\c_programming\lab2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+
+1711464032 shed changes
 	<stdio.h>
 	<stdlib.h>
 	<stdbool.h>

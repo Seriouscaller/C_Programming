@@ -1,5 +1,9 @@
 # depslib dependency file v1.0
+<<<<<<< Updated upstream
 1711358924 source:c:\users\ralli\documents\github\c_programming\lab1\main.c
+=======
+1711391892 source:c:\users\ralli\documents\github\c_programming\lab1\main.c
+>>>>>>> Stashed changes
 	<stdio.h>
 	<stdlib.h>
 

@@ -6,7 +6,7 @@ unsigned int lengthOfString(char string[]);
 char readUserInputAndValidate(char, int, int);
 bool validateBinaryString(char string[], int);
 
-#define DEBUG
+//#define DEBUG
 
 int main()
 {
@@ -22,8 +22,11 @@ int main()
 
     /*Binary constants*/
     unsigned int checkFuel =            0b0000000000010000;
-    unsigned int checkSnowAndOverheat = 0b0000000000100100;
-    unsigned int checkBrakes =          0b0000000000000011;
+    unsigned int checkOverheat =        0b0000000000000100;
+    unsigned int checkSnow =            0b0000000000100000;
+
+    unsigned int checkBrakePads =       0b0000000000000001;
+    unsigned int checkBrakeFluid =      0b0000000000000010;
 
 
     /* Checking conditions. If any case is true, the resulting value will not be equal to 0 */
@@ -37,20 +40,36 @@ int main()
             #endif // DEBUG
         }
 
-        if((stat & checkSnowAndOverheat) > 0 ){
-
+        if(((stat & checkSnow) > 0) && ((stat & checkOverheat) > 0)){
+            //Snowing AND overheating
             puts("It's snowing outside, and the engine is too hot.");
             #ifdef DEBUG
-                printf("stat & checkSnowAndOverheat = %d\n", (stat & checkSnowAndOverheat));
+                printf("stat & checkSnow = %d\n", (stat & checkSnow));
+                printf("stat & checkOverheat = %d\n", (stat & checkOverheat));
             #endif // DEBUG
         }
-//excusive or
-        if((stat & checkBrakes) > 0){
 
+
+        unsigned int brakePadsMask = (stat & checkBrakePads);
+        unsigned int brakeFluidMask = (stat & checkBrakeFluid);
+
+        //isolating bit we are interested in
+        unsigned int brakePadsBit = brakePadsMask;
+
+        //moving the bit to the least significant bit
+        unsigned int brakeFluidBit = brakeFluidMask >> 1;
+        //Now we can apply our XOR-operation
+
+        if(brakePadsBit ^ brakeFluidBit > 0){
+
+            //If either one of brakebits are set
             puts("Either the brakefluid is too low, or the brakepads are bad.");
             #ifdef DEBUG
-                printf("stat & checkBrakes = %d\n", (stat & checkBrakes));
+                printf("stat & checkBrakes = %d\n", (brakePadsBit ^ brakeFluidBit));
             #endif // DEBUG
+        }else{
+            //If both brakebits are set, it's working normally
+            puts("Everything in the car is working normally.");
         }
     }else{
         puts("Everything in the car is working normally.");
